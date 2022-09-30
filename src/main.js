@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import './assets/fonts/iconfont.css'
+import './assets/fonts2/iconfont.css'
 import Element from "element-ui"
 import "element-ui/lib/theme-chalk/index.css"
 import VueParticles from 'vue-particles'
@@ -13,6 +14,11 @@ import moment from 'moment'
 import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
 import VueLazyload from 'vue-lazyload'
+import { VueJsonp } from 'vue-jsonp'
+import axios2 from 'axios'
+import VueAppend from 'vue-append'
+import $ from 'jquery'
+
 
 Vue.use(VueLazyload, {
   loading:require('./Picture/jiazai.gif'),//加载中的图片
@@ -37,18 +43,23 @@ Viewer.setDefaults({
     'url': 'data-source'
   }
 })
-Vue.prototype.$echarts=window.echarts
-Vue.prototype.$moment = moment
-Vue.config.productionTip=false
-Vue.use(dataV)
+Vue.prototype.$echarts=window.echarts//echarts全局引入
+Vue.prototype.$moment = moment//时间、日期组件
+Vue.config.productionTip=false//阻止启动生产消息，建议开发时设为true
+Vue.use(dataV)//数据可视化组件，<dv->
 Vue.prototype.$axios =axios
 Vue.config.productionTip = false
-Vue.use(VueParticles)
+Vue.use(VueParticles)//粒子背景插件，一般用于登陆页面
 Vue.use(Element)
-Vue.use(Dropdown)
+Vue.use(Dropdown)//下拉框组件
 Vue.use(DropdownItem)
 Vue.use(DropdownMenu)
-require("./mock.js")
+Vue.use(VueJsonp)
+require("./mock.js")//随机生成数据模拟后端接口
+Vue.prototype.$http = axios2
+Vue.use(VueAppend)
+window.jQuery = $
+window.$ = $
 
 new Vue({
   router,

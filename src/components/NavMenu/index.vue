@@ -12,7 +12,7 @@
         router
       >
         <template v-for="route in routes">
-          <Menu v-if="!route.hidden" :key="route.path" :item="route"/>
+          <Menu v-if="route.level==1" :key="route.path" :item="route"/>
         </template>
       </el-menu>
     </el-scrollbar>

@@ -112,7 +112,7 @@ export default {
         }
         if (warp === 0) { // 此代码块改背景色为渐变色
           var grd=c.createRadialGradient(canvas.width,canvas.height,canvas.width,canvas.width,canvas.height,1000);
-          grd.addColorStop(0,"rgba(1, 9, 41, 0.6)");
+          grd.addColorStop(0,"rgba(0, 18, 41, 0.6)");
           grd.addColorStop(1,"rgba(2, 8, 36, 0.6)");
           c.fillStyle = grd;
           c.fillRect(0, 0, canvas.width, canvas.height);

@@ -5,10 +5,10 @@
     </el-aside>
     <el-container>
       <el-header>
-        <Header></Header>
+        <Header2></Header2>
       </el-header>
       <el-main style="padding: 0px">
-        <Tabs style="height: 42px;"></Tabs>
+        <!-- <Tabs style="height: 42px;"></Tabs> -->
         <router-view style="height: 100%;"/>
       </el-main>
     </el-container>
@@ -17,9 +17,10 @@
 
 <script>
 import NavMenu from '@/components/NavMenu'
-import Header from "@/components/Header";
+import Header2 from "@/components/Header2";
 import Tabs from "@/views/inc/Tabs"
 export default {
+
   // 添加背景色 margin:0;padding:0是为了解决vue四周有白边的问题
   beforeRouteEnter(to, from, next) {
     document.querySelector('body').setAttribute('style', 'margin:0;padding:0')
@@ -33,7 +34,7 @@ export default {
   name: "Layout",
   components: {
     NavMenu,
-    Header,
+    Header2,
     Tabs
   }
 }

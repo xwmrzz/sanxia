@@ -10,12 +10,15 @@
 
 <script>
 import GreatCharts from '@/extra/GreaChart'
-import {chartWaterlv} from '@/api/waterlv'
+import {waterlevelChart} from '@/api/YangtzeWaterlevel/waterlevelChart'
 
 export default {
   name: "waterlevel",
   data() {
     return {
+      ChartObject:{
+        point_name:"JC43",
+      },
       chartInstance:null,
       initOptions: {
         renderer: 'svg',
@@ -85,17 +88,18 @@ export default {
   },
   methods: {
     getWaterLvList() {
-      const data = {
-        recordTime: '2020-01-03'
-      }
-      chartWaterlv().then(res => {
+      // const data = {
+      //   recordTime: '2020-01-03'
+      // }
+      waterlevelChart(this.ChartObject).then(res => {
         console.log(res)
         const { data, msg, status } = res
         const x = [], y = []
 
         data.forEach(i => {
-          x.push(i.recordTime)
-          y.push(i.waterLevels)
+          var time = i.observation_time.substring(0,10)
+          x.push(time)
+          y.push(i.yangtze_waterlevel)
         })
 
         this.options.xAxis.data = x
